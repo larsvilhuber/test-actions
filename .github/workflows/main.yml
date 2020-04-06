@@ -27,10 +27,10 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run docker
       uses: docker://pandoc/latex:2.9
-        with: # needs a README in your repo root!
+      with:
           args: "--standalone --output=output/README.pdf README.md"
     - name: upload
       uses: actions/upload-artifact@master
-        with:
+      with:
           name: output
           path: output
