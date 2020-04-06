@@ -14,7 +14,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    if: "!contains(github.event.head_commit.message, '[noaction]')"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -22,13 +22,22 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Create directory
-      run: mkdir output
+      run: mkdir docs
 
     # Runs a set of commands using the runners shell
     - name: Run docker
       uses: docker://pandoc/latex:2.9
       with:
-          args: "--standalone --output=output/README.pdf README.md"
+          args: "--standalone --output=docs/README.pdf README.md"
+    - name: Add files
+      run: |
+        git add docs/README.pdf
+    - name: push files
+      uses: EndBug/add-and-commit@v4
+      with: 
+        message: '[noaction] Generated PDF'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: upload
       uses: actions/upload-artifact@master
       with:
