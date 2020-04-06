@@ -22,7 +22,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Create directory
-      run: mkdir docs
+      run: [[ -d docs ]] || mkdir docs
 
     # Runs a set of commands using the runners shell
     - name: Run docker
