@@ -1,3 +1,3 @@
 # test-actions
 
-See [README.pdf](README.pdf).
+See [README.pdf](docs/README.pdf).
