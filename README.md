@@ -4,7 +4,7 @@ This is a test implementation of combining [Github Actions](https://github.com/f
 
 ## Part 1
 
-The first part uses Pandoc to convert a Markdown file into PDF. This is handled by the [.github/workflows/main.yml](https://github.com/larsvilhuber/test-actions/.github/workflows/main.yml) file, parameterizing various Github Actions (`docker`, `git push`). 
+The first part uses Pandoc to convert a Markdown file into PDF. This is handled by the [.github/workflows/main.yml](https://github.com/larsvilhuber/test-actions/tree/master/.github/workflows/main.yml) file, parameterizing various Github Actions (`docker`, `git push`). 
 
 This is pushed back to the repository proper (could be a separate branch, such as `gh-pages`), but with a `[noactions]` tag so it does not get processed. 
 
